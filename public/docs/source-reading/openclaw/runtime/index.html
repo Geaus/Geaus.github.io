@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Runtime 与执行流程# 这一页用于整理 OpenClaw 的运行时环境、任务调度和执行链路。
+可以关注的问题# Runtime 负责哪些职责 Agent 与 Runtime 如何交互 执行环境如何隔离 日志、状态和产物如何管理 ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://geaus.github.io/docs/source-reading/openclaw/runtime/">
+  <meta property="og:site_name" content="Geaus Blog">
+  <meta property="og:title" content="Runtime 与执行流程">
+  <meta property="og:description" content="Runtime 与执行流程# 这一页用于整理 OpenClaw 的运行时环境、任务调度和执行链路。
+可以关注的问题# Runtime 负责哪些职责 Agent 与 Runtime 如何交互 执行环境如何隔离 日志、状态和产物如何管理">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Runtime 与执行流程">
+  <meta itemprop="description" content="Runtime 与执行流程# 这一页用于整理 OpenClaw 的运行时环境、任务调度和执行链路。
+可以关注的问题# Runtime 负责哪些职责 Agent 与 Runtime 如何交互 执行环境如何隔离 日志、状态和产物如何管理">
+  <meta itemprop="wordCount" content="14">
+
+<title>Runtime 与执行流程 | Geaus Blog</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://geaus.github.io/docs/source-reading/openclaw/runtime/">
+<link rel="stylesheet" href="/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/en.search.min.783f68990d028419bad2f36c753994c9d37d5fa23fc654f0130f4609d97f034f.js" integrity="sha256-eD9omQ0ChBm60vNsdTmUydN9X6I/xlTwEw9GCdl/A08=" crossorigin="anonymous"></script>
+
+
+
+  
+<link rel="stylesheet" href="/custom.min.69127c993a722011e546126becbccf06e43deb88a3e4f71f190e8c9b01139b72.css" integrity="sha256-aRJ8mTpyIBHlRhJr7LzPBuQ964ij5PcfGQ6MmwETm3I=">
+
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+
+  <header class="site-topbar">
+    <a class="site-title" href="/">Geaus Blog</a>
+    <nav class="site-main-nav" aria-label="主导航">
+      
+        <a href="/docs/source-reading/" class="active">源码解读</a>
+      
+        <a href="/docs/investing/">投资心得</a>
+      
+        <a href="/docs/interviews/">面经整理</a>
+      
+    </nav>
+  </header>
+
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Geaus Blog</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f9c5b665d480097e98c3163c03efee9c" class="toggle" checked />
+    <label for="section-f9c5b665d480097e98c3163c03efee9c" class="flex">
+      <a href="/docs/source-reading/" class="">
+        源码解读</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48b0ef19aa9ac07838ac6e2a7b9fd102" class="toggle" checked />
+    <label for="section-48b0ef19aa9ac07838ac6e2a7b9fd102" class="flex">
+      <a href="/docs/source-reading/openclaw/" class="">
+        OpenClaw 解读</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/architecture/" class="">
+      架构总览</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/memory/" class="">
+      记忆机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-89c0a2c7c3612f19d0d0fdc4b5096684" class="toggle"  />
+    <label for="section-89c0a2c7c3612f19d0d0fdc4b5096684" class="flex">
+      <a href="/docs/source-reading/openclaw/agent/" class="">
+        Agent 机制</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/agent/lifecycle/" class="">
+      生命周期</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/agent/planning/" class="">
+      规划机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/agent/execution/" class="">
+      执行机制</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/tools/" class="">
+      工具调用机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/openclaw/runtime/" class="active">
+      Runtime 与执行流程</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/source-reading/codex/" class="">
+      Codex 解读</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac932ef10a908340b8c690b63fc5878d" class="toggle"  />
+    <label for="section-ac932ef10a908340b8c690b63fc5878d" class="flex">
+      <a href="/docs/investing/" class="">
+        投资心得</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/investing/framework/" class="">
+      投资框架</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9055a1c3be7dd96c5b02cff572c32aff" class="toggle"  />
+    <label for="section-9055a1c3be7dd96c5b02cff572c32aff" class="flex">
+      <a href="/docs/interviews/" class="">
+        面经整理</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interviews/system-design/" class="">
+      系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interviews/cpp/" class="">
+      C&#43;&#43; 面经</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Runtime 与执行流程</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#可以关注的问题">可以关注的问题</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="runtime-与执行流程">Runtime 与执行流程<a class="anchor" href="#runtime-%e4%b8%8e%e6%89%a7%e8%a1%8c%e6%b5%81%e7%a8%8b">#</a></h1>
+<p>这一页用于整理 OpenClaw 的运行时环境、任务调度和执行链路。</p>
+<h2 id="可以关注的问题">可以关注的问题<a class="anchor" href="#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98">#</a></h2>
+<ul>
+<li>Runtime 负责哪些职责</li>
+<li>Agent 与 Runtime 如何交互</li>
+<li>执行环境如何隔离</li>
+<li>日志、状态和产物如何管理</li>
+</ul>
+</article>
+
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/source-reading/openclaw/tools/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>工具调用机制</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/source-reading/codex/" class="flex align-center">
+        <span>Codex 解读</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+
+        
+  
+
+        
+        
+  
+
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#可以关注的问题">可以关注的问题</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

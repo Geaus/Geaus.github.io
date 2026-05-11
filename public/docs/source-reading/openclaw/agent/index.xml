@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agent 机制 on Geaus Blog</title>
+    <link>https://geaus.github.io/docs/source-reading/openclaw/agent/</link>
+    <description>Recent content in Agent 机制 on Geaus Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <atom:link href="https://geaus.github.io/docs/source-reading/openclaw/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>生命周期</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/agent/lifecycle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/agent/lifecycle/</guid>
+      <description>&lt;h1 id=&#34;生命周期&#34;&gt;生命周期&lt;a class=&#34;anchor&#34; href=&#34;#%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 Agent 从创建、运行到结束的完整生命周期。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Agent 初始化时加载哪些配置和上下文&lt;/li&gt;&#xA;&lt;li&gt;主循环如何推进&lt;/li&gt;&#xA;&lt;li&gt;什么时候结束任务&lt;/li&gt;&#xA;&lt;li&gt;失败、中断和重试如何处理&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>规划机制</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/agent/planning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/agent/planning/</guid>
+      <description>&lt;h1 id=&#34;规划机制&#34;&gt;规划机制&lt;a class=&#34;anchor&#34; href=&#34;#%e8%a7%84%e5%88%92%e6%9c%ba%e5%88%b6&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 Agent 如何拆解任务、选择下一步动作和更新计划。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;任务目标如何表示&lt;/li&gt;&#xA;&lt;li&gt;计划是显式结构还是隐式推理&lt;/li&gt;&#xA;&lt;li&gt;计划如何随工具结果更新&lt;/li&gt;&#xA;&lt;li&gt;什么时候重新规划&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>执行机制</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/agent/execution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/agent/execution/</guid>
+      <description>&lt;h1 id=&#34;执行机制&#34;&gt;执行机制&lt;a class=&#34;anchor&#34; href=&#34;#%e6%89%a7%e8%a1%8c%e6%9c%ba%e5%88%b6&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 Agent 如何调用工具、处理结果并推进任务。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;工具调用入口在哪里&lt;/li&gt;&#xA;&lt;li&gt;工具结果如何回传给 Agent&lt;/li&gt;&#xA;&lt;li&gt;执行失败如何处理&lt;/li&gt;&#xA;&lt;li&gt;执行过程如何记录日志或轨迹&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

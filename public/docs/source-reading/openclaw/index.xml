@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenClaw 解读 on Geaus Blog</title>
+    <link>https://geaus.github.io/docs/source-reading/openclaw/</link>
+    <description>Recent content in OpenClaw 解读 on Geaus Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <atom:link href="https://geaus.github.io/docs/source-reading/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>架构总览</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/architecture/</guid>
+      <description>&lt;h1 id=&#34;架构总览&#34;&gt;架构总览&lt;a class=&#34;anchor&#34; href=&#34;#%e6%9e%b6%e6%9e%84%e6%80%bb%e8%a7%88&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 OpenClaw 的整体架构。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;项目入口在哪里&lt;/li&gt;&#xA;&lt;li&gt;核心模块如何划分&lt;/li&gt;&#xA;&lt;li&gt;一次任务从输入到输出经过哪些阶段&lt;/li&gt;&#xA;&lt;li&gt;哪些抽象负责隔离模型、工具和执行环境&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>记忆机制</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/memory/</guid>
+      <description>&lt;h1 id=&#34;记忆机制&#34;&gt;记忆机制&lt;a class=&#34;anchor&#34; href=&#34;#%e8%ae%b0%e5%bf%86%e6%9c%ba%e5%88%b6&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 OpenClaw 如何保存、检索和使用上下文记忆。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;记忆数据存在哪里&lt;/li&gt;&#xA;&lt;li&gt;记忆何时写入&lt;/li&gt;&#xA;&lt;li&gt;记忆如何检索&lt;/li&gt;&#xA;&lt;li&gt;记忆如何参与 Agent 的决策&lt;/li&gt;&#xA;&lt;li&gt;短期上下文和长期记忆如何区分&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>工具调用机制</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/tools/</guid>
+      <description>&lt;h1 id=&#34;工具调用机制&#34;&gt;工具调用机制&lt;a class=&#34;anchor&#34; href=&#34;#%e5%b7%a5%e5%85%b7%e8%b0%83%e7%94%a8%e6%9c%ba%e5%88%b6&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 OpenClaw 的工具注册、权限控制和调用流程。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;工具如何定义和注册&lt;/li&gt;&#xA;&lt;li&gt;工具参数如何校验&lt;/li&gt;&#xA;&lt;li&gt;权限边界在哪里&lt;/li&gt;&#xA;&lt;li&gt;工具调用结果如何序列化&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Runtime 与执行流程</title>
+      <link>https://geaus.github.io/docs/source-reading/openclaw/runtime/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://geaus.github.io/docs/source-reading/openclaw/runtime/</guid>
+      <description>&lt;h1 id=&#34;runtime-与执行流程&#34;&gt;Runtime 与执行流程&lt;a class=&#34;anchor&#34; href=&#34;#runtime-%e4%b8%8e%e6%89%a7%e8%a1%8c%e6%b5%81%e7%a8%8b&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;这一页用于整理 OpenClaw 的运行时环境、任务调度和执行链路。&lt;/p&gt;&#xA;&lt;h2 id=&#34;可以关注的问题&#34;&gt;可以关注的问题&lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%af%e4%bb%a5%e5%85%b3%e6%b3%a8%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Runtime 负责哪些职责&lt;/li&gt;&#xA;&lt;li&gt;Agent 与 Runtime 如何交互&lt;/li&gt;&#xA;&lt;li&gt;执行环境如何隔离&lt;/li&gt;&#xA;&lt;li&gt;日志、状态和产物如何管理&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
