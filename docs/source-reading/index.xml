@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>源码解读 on Geaus Blog</title><link>https://geaus.github.io/docs/source-reading/</link><description>Recent content in 源码解读 on Geaus Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://geaus.github.io/docs/source-reading/index.xml" rel="self" type="application/rss+xml"/><item><title>Codex 解读</title><link>https://geaus.github.io/docs/source-reading/codex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://geaus.github.io/docs/source-reading/codex/</guid><description>&lt;h1 id="codex-解读"&gt;Codex 解读&lt;a class="anchor" href="#codex-%e8%a7%a3%e8%af%bb"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;这里可以整理 Codex 的 agent 工作流、工具调用、沙箱机制和工程实践。&lt;/p&gt;
+&lt;h2 id="阅读线索"&gt;阅读线索&lt;a class="anchor" href="#%e9%98%85%e8%af%bb%e7%ba%bf%e7%b4%a2"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Agent 主循环&lt;/li&gt;
+&lt;li&gt;工具权限模型&lt;/li&gt;
+&lt;li&gt;任务规划与执行&lt;/li&gt;
+&lt;li&gt;前端/终端交互&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
